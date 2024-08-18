@@ -12,9 +12,9 @@ chmod +x install.sh
 ### Install process
 During the installation process you will be asked which packages should be installed.
 
-**nvidia:** do you have a nvidia card build in? (y/n)
-**bluetooth:** do you want to install bluetooth driver? (y/n)
-**preconfigure:** should the system be preconfigured with the dotfiles from this repo? (y/n)
+**nvidia:** do you have a nvidia card build in? (y/n)  
+**bluetooth:** do you want to install bluetooth driver? (y/n)  
+**preconfigure:** should the system be preconfigured with the dotfiles from this repo? (y/n)  
 **theme:** if preconfiuration has been selected you can select from diffrent themes. (List of themes)
 ## Configuration
 The installation process will create all needed folders and files inside .config to jumpstart the configuration. If the system has not been preconfigured, the configuration files contain commented-out examples.
