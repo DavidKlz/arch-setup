@@ -18,3 +18,13 @@ During the installation process you will be asked which packages should be insta
 **theme:** if preconfiuration has been selected you can select from diffrent themes. (List of themes)
 ## Configuration
 The installation process will create all needed folders and files inside .config to jumpstart the configuration. If the system has not been preconfigured, the configuration files contain commented-out examples.
+### hypr
+### kvantum
+### kitty
+### rofi
+### swaync
+### wallust
+### waybar
+### wlogout
+## Credits
+Some copy pastas from [JaKooLit's Arch-Hyprland Script](https://github.com/JaKooLit/Arch-Hyprland)
