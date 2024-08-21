@@ -1,0 +1,84 @@
+* {
+	border: none;
+	border-radius: 0px;
+	font-family: OverpassM Nerd Font;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+window#waybar {
+	background: rgba(29, 32, 33, 0);
+	color: #ebdbb2;
+}
+
+tooltip {
+	background: #282828;
+	border-radius: 10px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #1d2021;
+}
+
+
+#workspaces {
+	background: #32302f;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 6px;
+	border-radius: 6px;
+	padding: 1px;
+}
+#workspaces button {
+	padding: 0 0.6em;
+	color: #504945;
+	border-radius: 6px;
+	margin: 2px;
+}
+#workspaces button.active, button.focused {
+	color: #ebdbb2;
+	background: #4e635b;
+	border: 1px solid #a9b665;
+	margin: 1px;
+}
+#workspaces button.urgent {
+	color: #1d2021;
+	background: #fb4932;
+}
+#workspaces button:hover {
+	background: rgba(78, 99, 91, 0.6);
+	color: #ebdbb2;
+	border: 0.5px solid #a9b665;
+	margin: 0.5px;
+}
+
+#tray, #clock, #hyprland-workspaces, #memory, #temperature, #pulseaudio, #custom-updater, #network, #custom-sound, #bluetooth {
+	background: #32302f;
+	padding: 0 0.6em;
+	margin: 4px;
+	border-radius: 6px;
+}
+
+#custom-player {
+	background: rgba(50, 48, 47, 0.7);
+	border: 1px solid #a9b665;
+	border-radius: 6px;
+	margin: 4px 4px 4px 25px;
+	padding: 0 0.6em;
+}
+
+#idle_inhibitor, #cpu {
+	background: #32302f;
+	padding: 0 1em 0 0.4em;
+	margin: 4px;
+	border-radius: 6px;
+}
+
+#custom-power {
+	background: #32302f;
+	padding: 0 0.8em 0 0.5em;
+	margin-left: 4px;
+	margin-right: 8px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	border-radius: 6px;
+}

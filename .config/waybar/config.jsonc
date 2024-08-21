@@ -1,0 +1,195 @@
+// -*- mode: jsonc -*-
+{
+	"spacing": 5,
+	"modules-left": ["hyprland/workspaces", "custom/player"],
+	"modules-center": ["idle_inhibitor", "clock", "custom/updater"],
+	"modules-right": ["group/net", "cpu", "memory", "temperature", "tray", "group/audio", "bluetooth", "custom/power"],
+
+	"tray": {
+	        "icon-size": 18,
+        	"spacing": 10
+    	},
+	"clock": {
+		"format": " {:%H:%M:%S}",
+		"interval": 1,
+		"tooltip-format": "<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}"
+	},
+	"group/net": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 200,
+			"transition-left-to-right": false,
+			"child-class": "grp-network"
+		},
+		"modules": ["network", "network#speed"]
+	},
+	"network": {
+		"format": "{ifname}",
+		"format-wifi": "{icon}",
+		"format-ethernet": "󰌘",
+		"format-disconnected": "󰌙",
+		"tooltip-format": "󰌘 {ifname}\nIP: {ipaddr}",
+		"format-linked": "󰈁 {ifname} (No IP)",
+		"tooltip-format-disconnected": "󰌙 Disconnected",
+		"max-length": 30,
+		"format-icons": [
+			"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+		],
+		"on-click-right": "kitty nmtui"
+	},
+	"network#speed": {
+		"interval": 1,
+		"format": "{ifname}",
+		"format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
+		"format-ethernet": " {bandwidthUpBytes}  {bandwidthDownBytes}",
+		"format-disconnected": "󰌙",
+		"tooltip-format": "󰌘 {ifname}\nIP: {ipaddr}",
+		"format-linked": "󰈁 {ifname} (No IP)",
+		"tooltip-format-disconnected": "󰌙 Disconnected",
+		"min-length": 24,
+		"max-length": 24,
+		"format-icons": [
+			"󰤯", "󰤟", "󰤢", "󰤥", "󰤨"
+		]
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		},
+		"tooltip-format-activated": "IDLE {status}",
+		"tooltip-format-deactivated": "IDLE {status}"
+	},
+	"hyprland/workspaces": {
+		"format": "{icon}",
+		"on-scroll-up": "hyprctl dispatch workspace e+1",
+		"on-scroll-down": "hyprctl dispatch workspace e-1",
+		"on-click": "activate",
+		"active-only": false,
+		"all-outputs": true,
+		"show-special": false,
+		"persistent-workspaces": {
+			"1": [],
+			"2": [],
+			"3": [],
+			"4": [],
+			"5": [],
+			"6": []
+		},
+		"format-icons": {
+			"active": " ✿ ",
+			"default": " ❀ "
+		}
+	},
+	"cpu": {
+		"format": "{usage}% ",
+		"interval": 1,
+		"on-click": "gnome-system-monitor"
+	},
+	"memory": {
+		"format": "{}% ",
+		"interval": 1,
+		"on-click": "gnome-system-monitor"
+	},
+	"temperature": {
+		"interval": 10,
+		"tooltip": true,
+		"hwmon-path": [
+			"/sys/class/hwmon/hwmon1/temp1_input",
+			"/sys/class/thermal/thermal_zone0/temp"
+		],
+		"critical-threshold": 82,
+		"format": "{temperatureC}°C {icon}",
+		"format-icons": ["󰈸"],
+		"on-click": "kitty --title nvtop sh -c 'nvtop'"
+	},
+	"group/audio": {
+		"orientation": "horizontal",
+		"drawer": {
+			"transition-duration": 200,
+			"transition-left-to-right": false
+		},
+		"modules": ["custom/sound", "pulseaudio", "pulseaudio#microphone"]
+	},
+	"custom/sound": {
+		"format": "󰕾"
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} 󰂰 {volume}%",
+		"format-muted": "󰖁",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [
+				"", "", "󰕾",  ""
+			],
+			"ignored-sinks": [
+				"Easy Effects Sink"
+			]
+		},
+		"scroll-step": 5.0,
+		"on-click": "~/.config/hypr/scripts/volume.sh --toggle",
+		"on-click-right": "pavucontrol -t 3",
+		"on-scroll-up": "~/.config/hypr/scripts/volume.sh --inc",
+		"on-scroll-down": "~/.config/hypr/scripts/volume.sh --dec",
+		"tooltip-format": "{icon} {desc} | {volume}%",
+		"smooth-scrolling-threshold": 1
+	},
+	"pulseaudio#microphone": {
+		"format": "{format_source}",
+		"format-source": " {volume}%",
+		"format-source-muted": " Muted",
+		"on-click": "~/.config/hypr/scripts/volume.sh --toggle-mic",
+		"on-click-right": "pavucontrol -t 4",
+		"on-scroll-up": "~/.config/hypr/scripts/volume.sh --mic-inc",
+		"on-scroll-down": "~/.config/hypr/scripts/volume.sh --mic-dec",
+		"tooltip-format": " {source_desc} | {source_volume}%",
+		"scroll-step": 5
+	},
+	"custom/power": {
+		"format": "⏻",
+		"tooltip": false,
+		"on-click": "~/.config/hypr/scripts/wlogout.sh"
+	},
+	"custom/updater": {
+		"format": "⟑ {}",
+		"exec": "checkupdates | wc -l",
+		"exec-if": "[[ $(checkupdates | wc -l) ]]",
+		"interval": 30,
+		"on-click": "kitty -T update yay -Syu && notify-send 'The system has been updated'",
+		"tooltip": true,
+		"tooltip-format": "Update Arch packages"
+	},
+	"bluetooth": {
+		"format": "",
+		"format-disabled": "󰂳",
+		"format-connected": "󰂱 {num_connections}",
+		"tooltip-format": " {device_alias}",
+		"tooltip-format-on": " No Device connected",
+		"tooltip-format-connected": "{device_enumerate}",
+		"tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+		"tooltip": true,
+		"on-click": "blueman-manager"
+	},
+	"custom/player": {
+		"format": "<span>  {}</span>",
+		"return-type": "json",
+		"max-length": 35,
+		"exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} ~ {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+		"on-click-middle": "playerctl play-pause",
+		"on-click": "playerctl previous",
+		"on-click-right": "playerctl next",
+		"scroll-step": 5.0,
+		"on-scroll-up": "~/.config/hypr/scripts/Volume.sh --inc",
+		"on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
+		"smooth-scrolling-threshold": 1,
+		"tooltip": false
+	}
+}
