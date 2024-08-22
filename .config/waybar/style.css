@@ -18,6 +18,9 @@ tooltip {
 	border-style: solid;
 	border-color: #1d2021;
 }
+tooltip label {
+	color: #ebdbb2;
+}
 
 
 #workspaces {
@@ -51,7 +54,8 @@ tooltip {
 	margin: 0.5px;
 }
 
-#tray, #clock, #hyprland-workspaces, #memory, #temperature, #pulseaudio, #custom-updater, #network, #custom-sound, #bluetooth {
+/* Modules */
+#tray, #clock, #hyprland-workspaces, #memory, #temperature, #pulseaudio, #custom-updater, #network, #custom-sound, #bluetooth, #custom-swaync {
 	background: #32302f;
 	padding: 0 0.6em;
 	margin: 4px;
@@ -81,4 +85,55 @@ tooltip {
 	margin-top: 4px;
 	margin-bottom: 4px;
 	border-radius: 6px;
+}
+
+/* Hover Effects */
+
+/* Green */
+#custom-swaync:hover, #network:hover, #custom-sound:hover, #pulseaudio:hover {
+	color: #a9b665;
+	border: 1px solid #a9b665;
+	margin: 3px;
+}
+
+/* Yellow */
+#memory:hover, #temperature:hover, #cpu:hover {
+	color: #d8a657;
+	border: 1px solid #d8a657;
+	margin: 3px;
+}
+
+/* Orange */
+#custom-swaync:hover {
+	color: #e78a4e;
+	margin: 3px;
+	border: 1px solid #e78a4e;
+}
+
+/* Blue */
+#bluetooth:hover {
+	color: #7daea3;
+	border: 1px solid #7daea3;
+	margin: 3px;
+}
+
+/* Red */
+#custom-power:hover {
+	color: #ea6962;
+	border: 1px solid #ea6962;
+	margin: 3px 7px 3px 3px;
+}
+
+/* Purple */
+#network:hover {
+	color: #d3869b;
+	border: 1px solid #d3869b;
+	margin: 3px;
+}
+
+/* Aqua */
+#idle_inhibitor:hover, #clock:hover, #custom-updater:hover {
+	color: #89b482;
+	border: 1px solid #89b482;
+	margin: 3px;
 }

@@ -3,7 +3,7 @@
 	"spacing": 5,
 	"modules-left": ["hyprland/workspaces", "custom/player"],
 	"modules-center": ["idle_inhibitor", "clock", "custom/updater"],
-	"modules-right": ["group/net", "cpu", "memory", "temperature", "tray", "group/audio", "bluetooth", "custom/power"],
+	"modules-right": ["group/net", "cpu", "memory", "temperature", "tray", "group/audio", "bluetooth", "custom/swaync", "custom/power"],
 
 	"tray": {
 	        "icon-size": 18,
@@ -114,7 +114,7 @@
 		"modules": ["custom/sound", "pulseaudio", "pulseaudio#microphone"]
 	},
 	"custom/sound": {
-		"format": "󰕾"
+		"format": " "
 	},
 	"pulseaudio": {
 		"format": "{icon} {volume}%",
@@ -128,7 +128,7 @@
 			"portable": "",
 			"car": "",
 			"default": [
-				"", "", "󰕾",  ""
+				"", "", " "
 			],
 			"ignored-sinks": [
 				"Easy Effects Sink"
@@ -156,7 +156,7 @@
 	"custom/power": {
 		"format": "⏻",
 		"tooltip": false,
-		"on-click": "~/.config/hypr/scripts/wlogout.sh"
+		"on-click": "~/.config/hypr/scripts/powermenu.sh"
 	},
 	"custom/updater": {
 		"format": "⟑ {}",
@@ -191,5 +191,25 @@
 		"on-scroll-down": "~/.config/hypr/scripts/Volume.sh --dec",
 		"smooth-scrolling-threshold": 1,
 		"tooltip": false
+	},
+	"custom/swaync": {
+		"tooltip": false,
+		"format": "{icon} {}",
+		"format-icons": {
+			"notification": "<span foreground='#ea6962'><sup></sup></span>",
+			"none": "",
+			"dnd-notification": "<span foreground='#ea6962'><sup></sup></span> ",
+			"dnd-none": " ",
+			"inhibited-notification": "<span foreground='#ea6962'><sup></sup></span>",
+			"inhibited-none": "",
+			"dnd-inhibited-notification": "<span foreground='#ea6962'><sup></sup></span>",
+			"dnd-inhibited-none": ""
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"on-click": "sleep 0.1 && swaync-client -t -sw",
+		"on-click-right": "swaync-client -d -sw",
+		"escape": true
 	}
 }

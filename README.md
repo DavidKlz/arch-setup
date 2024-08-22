@@ -28,3 +28,4 @@ The installation process will create all needed folders and files inside .config
 ### wlogout
 ## Credits
 Some copy pastas from [JaKooLit's Arch-Hyprland Script](https://github.com/JaKooLit/Arch-Hyprland)
+Grub Bootloader Theme: [AllJavi's Tartarus Grub](https://github.com/AllJavi/tartarus-grub)
