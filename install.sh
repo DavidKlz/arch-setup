@@ -1,14 +1,8 @@
 #!/bin/bash
 
-colorize_prompt() {
-  local color="$1"
-  local message="$2"
-  echo -n "${color}${message}$(tput sgr0)"
-}
-
 user_prompt() {
   if [[ ! -z "${!2}" ]]; then
-    echo "$(colorize_prompt "$CAT" "$1 (Preset): ${!2}")"
+    echo "$1 (Preset): ${!2}"
     if [[ "${!2}" = [Yy] ]]; then
       return 0
     else
@@ -18,7 +12,7 @@ user_prompt() {
     eval "$2=''"
   fi
   while true; do
-    read -p "$(colorize_prompt "$CAT" "$1 (y/n): ")" choice
+    read -p "$1 (y/n): " choice
     case "$choice" in
     [Yy]*)
       eval "$2='Y'"
@@ -45,7 +39,7 @@ user_options_prompt() {
   fi
 
   while true; do
-    read -p "$(colorize_prompt "$CAT" "$prompt ($valid_options): ")" choice
+    read -p "$prompt ($valid_options): " choice
     if [[ " $valid_options " == *" $choice "* ]]; then
       eval "$response_var='$choice'"
       return 0
@@ -66,13 +60,19 @@ printf "\n"
 user_prompt "Do you want to preconfigure Hyprland?" preconfig
 printf "\n"
 
-if [ "$preconfig" == "Y" ]; then
-  user_options_prompt "Which theme do you want to install?" "gruvbox" theme
-fi
-
 execute_script() {
   local script="$1"
   local script_path="scripts/$script"
+  if [ -f "$script_path" ]; then
+	  chmod +x "$script_path"
+	  if [ -x "$script_path" ]; then
+		  "$script_path"
+	  else
+		  echo "Failed to make script '$script' executable."
+	  fi
+  else
+	  echo "Script '$script' not found at '$script_path'."
+  fi
 }
 
 chmod +x scripts/*
