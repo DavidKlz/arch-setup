@@ -42,3 +42,8 @@ cd ..
 for dir in ./.config/*/; do
 	sudo cp -r "$dir" "$HOME/.config"
 done
+
+sudo cp -fr ./zsh/.zshrc "$HOME"
+sudo cp -fr ./wallpaper/lofi_outside.mp4 "$HOME/Videos"
+
+sudo chown -R $(whoami):$(whoami) "$HOME/.config"
