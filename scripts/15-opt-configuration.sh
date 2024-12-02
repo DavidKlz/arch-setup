@@ -62,4 +62,8 @@ done
 sudo cp "$PWD/wallpaper/lofi-outside.mp4" "$HOME/Videos/"
 
 sudo chown -R $(whoami):$(whoami) "$HOME/.config"
-sudo chmod +x "$HOME/.config/hypr/scripts/**"
+if [ -d "$HOME/.config/hypr/scripts" ]; then
+	chmod +x "$HOME/.config/hypr/scripts/**"
+else
+	echo "Couldn't give execution rights to $HOME/.config/hypr/scripts. Please do so manually!"
+fi
