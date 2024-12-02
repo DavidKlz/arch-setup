@@ -10,7 +10,7 @@
         	"spacing": 10
     	},
 	"clock": {
-		"format": " {:%H:%M:%S}",
+		"format": "  {:%H:%M:%S}",
 		"interval": 1,
 		"tooltip-format": "<tt><small>{calendar}</small></tt>",
 		"format-alt": "{:%Y-%m-%d}"
@@ -41,8 +41,8 @@
 	"network#speed": {
 		"interval": 1,
 		"format": "{ifname}",
-		"format-wifi": " {bandwidthUpBytes}  {bandwidthDownBytes}",
-		"format-ethernet": " {bandwidthUpBytes}  {bandwidthDownBytes}",
+		"format-wifi": "  {bandwidthUpBytes}   {bandwidthDownBytes}",
+		"format-ethernet": "  {bandwidthUpBytes}   {bandwidthDownBytes}",
 		"format-disconnected": "󰌙",
 		"tooltip-format": "󰌘 {ifname}\nIP: {ipaddr}",
 		"format-linked": "󰈁 {ifname} (No IP)",
@@ -117,7 +117,7 @@
 		"format": " "
 	},
 	"pulseaudio": {
-		"format": "{icon} {volume}%",
+		"format": "{icon}  {volume}%",
 		"format-bluetooth": "{icon} 󰂰 {volume}%",
 		"format-muted": "󰖁",
 		"format-icons": {

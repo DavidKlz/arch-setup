@@ -9,7 +9,7 @@ else
 	cd yay || { echo "Failed to open yay directory"; exit 1; }
 	makepkg -si --noconfirm || { echo "Failed to install yay"; exit 1; }
 	cd ..
-	rm -r yay
+	sudo rm -r yay
 fi
 
 echo "Performing system update..."

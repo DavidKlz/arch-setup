@@ -15,7 +15,7 @@ packages=(
 	swappy
 	swaync
 	waybar
-	swww
+	mpvpaper
 	wallust
 	wget
 	wlogout

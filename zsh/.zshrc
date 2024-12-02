@@ -24,3 +24,4 @@ setopt appendhistory
 unsetopt BEEP
 
 eval "$(oh-my-posh init zsh --config /usr/share/oh-my-posh/themes/gruvbox.omp.json)"
+eval "$(ssh-agent -s)"
