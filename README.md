@@ -2,7 +2,7 @@
 
 ## Arch Requirements
 
-Minimal Arch Setup with base-devel and git via archinstall script.
+Minimal Arch Setup with git installed via archinstall script.
 
 ## Installation
 
